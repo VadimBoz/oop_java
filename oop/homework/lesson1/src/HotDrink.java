@@ -21,6 +21,7 @@ public class HotDrink extends BottleOfWatter {
                 "name = " + super.getName() +
                 "; volume = " + super.getVolume() +
                 "; cost = " + super.getCost() +
+                "; temperature = " + temperature +
                 '}';
     }
 }
