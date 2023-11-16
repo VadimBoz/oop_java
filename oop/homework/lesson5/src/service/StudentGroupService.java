@@ -76,7 +76,7 @@ public class StudentGroupService {
     public void readUsersFromFile(String fileName) {
         try (FileInputStream inputStream = new FileInputStream(fileName);
              ObjectInputStream objectInputStream = new ObjectInputStream(inputStream)){
-            DataServise ds = (DataServise) objectInputStream.readObject();
+            DataService ds = (DataService) objectInputStream.readObject();
             userList = ds.getUserList();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();

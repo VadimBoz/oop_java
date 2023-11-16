@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DataServise implements Serializable {
+public class DataService implements Serializable {
     private List<User> userList;
     private String fileName;
 
-    public DataServise(String fileName) {
+    public DataService(String fileName) {
 
         this.userList = new ArrayList<>();
         this.fileName = fileName;
@@ -26,6 +26,7 @@ public class DataServise implements Serializable {
         } else if (type == Type.TEACHER) {
             userList.add(new Teacher(firstName, secondName, lastName, getFreeID(type)));
         }
+        saveUserList();
     }
 
     private int getFreeID(Type type) {
@@ -53,7 +54,7 @@ public class DataServise implements Serializable {
         return userList.stream().filter(u -> u instanceof Teacher).collect(Collectors.toList());
     }
 
-    public void saveUserList()  {
+    private void saveUserList()  {
         try (FileOutputStream outputStream = new FileOutputStream(fileName);
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream)) {
 
