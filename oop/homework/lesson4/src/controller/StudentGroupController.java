@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import data.Student;
 import service.StudentGroupService;

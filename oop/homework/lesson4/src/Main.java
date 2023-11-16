@@ -1,5 +1,5 @@
-import controller.DepartamentController;
-import controller.StudentGroupController;
+import Controller.DepartamentController;
+import Controller.StudentGroupController;
 import data.Department;
 import data.Disciplines;
 import data.Teacher;
