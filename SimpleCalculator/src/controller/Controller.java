@@ -12,7 +12,7 @@ import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 
-public class Controller {
+public class Controller implements IController {
 
     private static Logger logger;
 
@@ -30,9 +30,9 @@ public class Controller {
     String expression;
     IView view = new View();
 
-    public void startProg () {
-        view.printOnConsoleStartMenu();
+    public void startProg() {
         logger.info("Start Program");
+        view.printOnConsoleStartMenu();
         int count = 0;
         while (true) {
             expression = view.getExpressionFromUser();
@@ -46,8 +46,8 @@ public class Controller {
                 ExpessionCalc expessionCalc = new ExpessionCalc(expression);
                 String res = expessionCalc.CalculateException();
                 view.setRes(res);
-                view.printResult();
                 logger.info("результат выражения:  " + res);
+                view.printResult();
             } catch (IllegalArgumentException e) {
                 view.printError(e.getMessage());
                 logger.log(Level.WARNING, e.getMessage());
