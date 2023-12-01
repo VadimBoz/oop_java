@@ -13,7 +13,7 @@ public class ExpessionCalc implements IExpressionCalc {
         this.expression = expression.replace(" ", "");
     }
     @Override
-    public String CalculateException() {
+    public String CalculateExpession() {
         int firstSign = 1;
         int secondSign = 1;
 

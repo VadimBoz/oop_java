@@ -44,7 +44,7 @@ public class Controller implements IController {
             try {
                 IExpressionCalc expressionCalc = new ExpessionCalc(expression);
 
-                String res = expressionCalc.CalculateException();
+                String res = expressionCalc.CalculateExpession();
                 view.setRes(res);
                 logger.info("результат выражения:  " + res);
                 view.printResult();
