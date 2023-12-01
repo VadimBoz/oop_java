@@ -27,7 +27,8 @@ public class Controller implements IController {
     }
 
     String expression;
-    IView view = new View();
+    private final IView view = new View();
+
 
     public void startProg() {
         logger.info("Start Program");
@@ -43,7 +44,6 @@ public class Controller implements IController {
             }
             try {
                 IExpressionCalc expressionCalc = new ExpessionCalc(expression);
-
                 String res = expressionCalc.CalculateExpession();
                 view.setRes(res);
                 logger.info("результат выражения:  " + res);
