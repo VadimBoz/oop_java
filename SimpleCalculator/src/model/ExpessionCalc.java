@@ -1,11 +1,6 @@
 package model;
 
-import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-public class ExpessionCalc {
+public class ExpessionCalc implements IExpressionCalc {
 
 
     private String expression;
@@ -13,12 +8,11 @@ public class ExpessionCalc {
 
     public ExpessionCalc(String expression)  {
 
-        if (expression.matches(".*[a-zA-Zzа-яА-Я%&{}@!$?<>\\\\].*") ||
-                expression.matches(".*[a-zA-Zzа-яА-Я%&{}@!$?<>\\\\].*"))
+        if (expression.matches(".*[a-zA-Zzа-яА-Я%&{}@!$?<>\\\\].*"))
             throw new IllegalArgumentException("недопустимые символы в выражении");
         this.expression = expression.replace(" ", "");
     }
-
+    @Override
     public String CalculateException() {
         int firstSign = 1;
         int secondSign = 1;
@@ -32,7 +26,6 @@ public class ExpessionCalc {
             secondSign = -1;
             expression = expression.replace("-", "");
         }
-
 
         OperationType operatorType = null;
         for (OperationType item : OperationType.values()) {

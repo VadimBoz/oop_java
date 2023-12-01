@@ -1,14 +1,13 @@
 package controller;
 
 import model.ExpessionCalc;
+import model.IExpressionCalc;
 import view.IView;
 import view.View;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 
@@ -43,8 +42,9 @@ public class Controller implements IController {
                 break;
             }
             try {
-                ExpessionCalc expessionCalc = new ExpessionCalc(expression);
-                String res = expessionCalc.CalculateException();
+                IExpressionCalc expressionCalc = new ExpessionCalc(expression);
+
+                String res = expressionCalc.CalculateException();
                 view.setRes(res);
                 logger.info("результат выражения:  " + res);
                 view.printResult();
