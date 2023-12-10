@@ -1,2 +1,4 @@
-package servise;public class GroupTransportToy {
+package servise;
+
+public class GroupTransportToy {
 }

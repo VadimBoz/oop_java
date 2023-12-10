@@ -14,10 +14,10 @@ public class Controller {
 
 
     public void Start() {
-        int flaf = 1;
+        int flag = 1;
         String key;
         try (Scanner in = new Scanner(System.in)) {
-            while (flaf != 0) {
+            while (flag != 0) {
                 menu.startMainMenu();
                 System.out.println("> ");
                 key = in.nextLine();
@@ -39,7 +39,7 @@ public class Controller {
                         key = menu.toContinue();
                         break;
                     case "4":
-                        flaf = 0;
+                        flag = 0;
                         break;
                     default:
                         System.out.println("Такой команды нет\n");
