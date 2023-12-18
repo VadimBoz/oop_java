@@ -67,8 +67,9 @@ public class ReadWriteToySetFile {
         Path homeDir = Path.of(System.getProperty("user.dir"));
 //        System.out.println(homeDir);
         String separator = System.getProperty("file.separator");
-        Path defaultDir = Path.of(homeDir.toAbsolutePath() + separator + "src" + separator + "data" + separator);
-        Path newDir = Path.of(homeDir.toAbsolutePath() + separator + "dataToy" + separator);
+        Path defaultDir = Path.of(homeDir.toAbsolutePath() +
+                separator + "toyLotery" + separator + "src" + separator + "data" + separator);
+        Path newDir = Path.of(homeDir.toAbsolutePath() + "toyLotery" + separator + "dataToy" + separator);
         if (Files.exists(defaultDir)) {
             System.out.println("папка по умолчанию c БД найдена " + defaultDir.toAbsolutePath());
             return defaultDir;
