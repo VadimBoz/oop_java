@@ -14,10 +14,10 @@ public class ReadWriteToySetFile {
     public void writeToySetToFile(List<Toy> toys) throws IOException {
         String separator = System.getProperty("file.separator");
         boolean appendRecord = false;
-        File fileToyList = new File(getPathDataDirectory() + separator  + "sweepstakes.srv");
+        File fileToyList = new File(getPathDataDirectory() + separator + "sweepstakes.srv");
 //        if (fileToyList.exists()) appendRecord = true;
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileToyList, appendRecord))){
-            for (Toy item: toys) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileToyList, appendRecord))) {
+            for (Toy item : toys) {
                 bw.write(item.toCrvString() + "\n");
                 System.out.println(item.toCrvString());
             }
@@ -36,12 +36,11 @@ public class ReadWriteToySetFile {
     }
 
 
-
     public ArrayList<Toy> readToysFromFile() throws IOException {
         ArrayList<Toy> res;
 
         String separator = System.getProperty("file.separator");
-        File fileUser = new File(getPathDataDirectory().toAbsolutePath() + separator  + "sweepstakes.srv");
+        File fileUser = new File(getPathDataDirectory().toAbsolutePath() + separator + "sweepstakes.srv");
         if (!fileUser.exists())
             throw new IOException("Файл с данными не найден");
         else {
@@ -50,13 +49,13 @@ public class ReadWriteToySetFile {
             while (br.ready()) {
                 String toyLine = br.readLine();
                 String[] ar = toyLine.split(";");
-                if (ar.length != 3) throw  new IllegalArgumentException("Данне в файле некорректные");
-                if (!ar[0].matches("\\d+")) throw  new IllegalArgumentException("Данне в файле некорректные (id)");
+                if (ar.length != 3) throw new IllegalArgumentException("Данне в файле некорректные");
+                if (!ar[0].matches("\\d+")) throw new IllegalArgumentException("Данне в файле некорректные (id)");
                 int id = Integer.parseInt(ar[0]);
-                if (!ar[1].matches("\\d*[.,]?\\d*")) throw new IllegalArgumentException("Вторым аргументом должно быть число");
+                if (!ar[1].matches("\\d*[.,]?\\d*"))
+                    throw new IllegalArgumentException("Вторым аргументом должно быть число");
                 double statWeight = Double.parseDouble(ar[1]);
                 res.add(new Toy(id, statWeight, ar[2]));
-
             }
         }
         return res;
@@ -86,7 +85,6 @@ public class ReadWriteToySetFile {
             }
             return newDir;
         }
-
     }
 
 

@@ -1,6 +1,6 @@
 package model;
 
-public class Toy  implements  Comparable<Toy> {
+public class Toy implements Comparable<Toy> {
     int toyId;
     double statWeight;
     String toyName;
@@ -17,21 +17,20 @@ public class Toy  implements  Comparable<Toy> {
         return toyId;
     }
 
-    public double getStatWeight() {
-        return statWeight;
-    }
-
-    public String getToyName() {
-        return toyName;
-    }
-
-
     public void setToyId(int toyId) {
         this.toyId = toyId;
     }
 
+    public double getStatWeight() {
+        return statWeight;
+    }
+
     public void setStatWeight(double statWeight) {
         this.statWeight = statWeight;
+    }
+
+    public String getToyName() {
+        return toyName;
     }
 
     public void setToyName(String toyName) {
@@ -48,16 +47,15 @@ public class Toy  implements  Comparable<Toy> {
     }
 
     public String toCrvString() {
-        return  toyId + ";" + statWeight + ";" + toyName;
+        return toyId + ";" + statWeight + ";" + toyName;
     }
-
 
 
     @Override
     public int compareTo(Toy toy) {
         double res = statWeight - toy.statWeight;
         if (res > 0) return 1;
-        else if (res < 0 ) return -1;
+        else if (res < 0) return -1;
         else return 0;
     }
 }
