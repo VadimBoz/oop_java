@@ -1,5 +1,8 @@
 package model;
 
+import model.enums.AgeRange;
+import model.enums.County;
+
 public  abstract class Toy implements ToyItem, Comparable<Toy> {
     private long toyId;
     private String name;
@@ -7,7 +10,9 @@ public  abstract class Toy implements ToyItem, Comparable<Toy> {
     private Double cost;
     boolean remoteControl;
     County madeIn;
-    String description;
+    String description = "*******";
+    double weight;    //   (вес в % от 100)
+    static int amount;
 
 
     public Toy() {
@@ -30,8 +35,12 @@ public  abstract class Toy implements ToyItem, Comparable<Toy> {
         this.toyId = toyId;
         this.remoteControl = remoteControl;
         this.madeIn = madeIn;
-        this.description = "";
+//        this.description = "";
     }
+
+
+
+
 
 
     @Override
@@ -87,7 +96,7 @@ public  abstract class Toy implements ToyItem, Comparable<Toy> {
 
     @Override
     public String getMadeIn() {
-        return madeIn.country;
+        return madeIn.getCountry();
     }
 
     @Override
@@ -108,9 +117,23 @@ public  abstract class Toy implements ToyItem, Comparable<Toy> {
 
     @Override
     public int compareTo(Toy o) {
+
         return Long.compare(this.toyId, o.toyId);
     }
 
 
 
+
+
+    @Override
+    public String toString() {
+        return
+                " toyId = " + toyId +
+                "; name = " + name +
+                "; ageRange = " + ageRange.getAgeRane()  +
+                "; cost = " + cost +
+                "; remoteControl = " + remoteControl +
+                "; madeIn = " + madeIn +
+                "; description = " + description + "\n";
+    }
 }

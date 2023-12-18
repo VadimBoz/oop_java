@@ -1,5 +1,8 @@
 package model;
 
+import model.enums.AgeRange;
+import model.enums.County;
+
 public interface ToyItem {
 
     long getToyId();

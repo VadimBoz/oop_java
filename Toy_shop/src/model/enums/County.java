@@ -1,4 +1,4 @@
-package model;
+package model.enums;
 
 public enum County {
     DEFAULT("Default"),
@@ -208,8 +208,11 @@ public enum County {
     final String country;
 
 
-    County(String country) {
+    private County(String country) {
         this.country = country;
     }
 
+    public String getCountry() {
+        return country;
+    }
 }

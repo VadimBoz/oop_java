@@ -1,13 +1,12 @@
 package model;
 
-import javax.naming.Name;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Toys extends Toy {
     List<Toy> listToys;
     long lastToyID;
-    Brand rb;
+
 
 
     void addToy(Toy toy) {

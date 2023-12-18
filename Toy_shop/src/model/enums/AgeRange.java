@@ -1,4 +1,4 @@
-package model;
+package model.enums;
 
 
 public enum AgeRange {      // в месяцах
@@ -19,7 +19,7 @@ public enum AgeRange {      // в месяцах
     final int ageStart;
     final int ageEnd;
 
-    AgeRange(int ageStart, int ageEnd) {
+    private AgeRange(int ageStart, int ageEnd) {
         this.ageStart = ageStart;
         this.ageEnd = ageEnd;
     }
@@ -32,4 +32,10 @@ public enum AgeRange {      // в месяцах
     public int getAgeEnd() {
         return ageEnd;
     }
+    public String getAgeRane(){
+        if (ageEnd == 2400)
+            return ageStart + "+" +" мес";
+        return ageStart + "-" + ageEnd +" мес";
+    }
+
 }
