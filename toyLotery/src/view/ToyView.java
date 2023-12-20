@@ -14,6 +14,7 @@ public class ToyView {
 
 
     public void startMenu() {
+        System.out.println();
         System.out.println("---------  Программа розыгрыша игрушек в магазине   ---------------");
         System.out.println();
         System.out.println("""  
@@ -24,7 +25,7 @@ public class ToyView {
                      5. Загрузить результаты розыгрыша из файла\s
                      6. Выйти из программы
                      
-                     Введите нункт меню >
+                     Введите пункт меню >
                 """);
     }
 

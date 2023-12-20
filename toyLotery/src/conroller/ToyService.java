@@ -30,9 +30,11 @@ public class ToyService {
 
     public void sweepstake(String countStr) { // добавляем в PriorityQueue игрушку соответствующую диапазону в который попало случайное число
         if (!countStr.matches("\\d+")) throw new IllegalArgumentException("Введено недопустимое число");
+
         int count = Integer.parseInt(countStr);
         if (count > 50)
             throw new IllegalArgumentException("Количество игрушек для розыгрыша слишком большое, не более 50");
+        if (count < 3) throw new IllegalArgumentException("Количество игрушек для розыгрыша слишком маленькое");
         if (toyList == null) throw new IllegalArgumentException("Не введены игрушки для розыгрыша");
         sweepstakes = new PriorityQueue<>();
         for (int j = 0; j < count; j++) {

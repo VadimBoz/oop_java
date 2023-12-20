@@ -23,23 +23,17 @@ public class Controller {
             toyView.startMenu();
             key = scanner.nextLine().trim();
             switch (key) {
-                case "1":
-                    addToy();
-                    break;
-                case "2":
-                    sweepstakesDo();
-                    break;
-                case "3":
-                    toPresentAward();
-                    break;
-                case "4":
+                case "1" -> addToy();
+                case "2" -> sweepstakesDo();
+                case "3" -> toPresentAward();
+                case "4" -> {
                     try {
                         rwToySet.writeToySetToFile(toyService.getSweepstakes());
                     } catch (Exception ex) {
                         System.out.println(ex.getMessage());
                     }
-                    break;
-                case "5":
+                }
+                case "5" -> {
                     try {
                         toyService = new ToyService(rwToySet.readToysFromFile(), 1);
                         toyView.printToConsoleToyList(toyService.getSweepstakes());
@@ -47,10 +41,9 @@ public class Controller {
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
-                    break;
-                default:
-                    System.out.println("Такой команды нет\n");
-                    break;
+                }
+                case "6" -> System.out.println("Программа завершена");
+                default -> System.out.println("Такой команды нет\n");
             }
         }
     }
@@ -77,7 +70,7 @@ public class Controller {
                     flag1 = 1;
                     break;
                 default:
-                    System.out.println("Такой команды нет\n");
+                    System.out.println("Такого пункта в меню нет\n");
                     break;
             }
         }
@@ -97,7 +90,6 @@ public class Controller {
                     String count = scanner2.nextLine();
 
                     try {
-//                        if (toyService == null) {
                         toyService = new ToyService(toySet.getToyList());
 //                        } else toyService.setToyList(toySet.getToyList());
                         toyService.sweepstake(count);
@@ -119,6 +111,7 @@ public class Controller {
     }
 
     public void toPresentAward() {
+        if (toyService.getSweepstakes().size() == 0 ) throw new IllegalArgumentException("все игрушки розданы покупателям");
         System.out.println("Игрушка вручена покупателю ");
         System.out.println(toyService.getSweepstakes().poll());
         System.out.println("В призовом фонде осталось игрушек " + toyService.getSweepstakes().size());

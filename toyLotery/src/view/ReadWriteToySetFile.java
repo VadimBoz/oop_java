@@ -42,15 +42,15 @@ public class ReadWriteToySetFile {
         String separator = System.getProperty("file.separator");
         File fileUser = new File(getPathDataDirectory().toAbsolutePath() + separator + "sweepstakes.srv");
         if (!fileUser.exists())
-            throw new IOException("Файл с данными не найден");
+            throw new IOException("Файл с данными sweepstakes.srv не найден в папке");
         else {
             BufferedReader br = new BufferedReader(new FileReader(fileUser));
             res = new ArrayList<>();
             while (br.ready()) {
                 String toyLine = br.readLine();
                 String[] ar = toyLine.split(";");
-                if (ar.length != 3) throw new IllegalArgumentException("Данне в файле некорректные");
-                if (!ar[0].matches("\\d+")) throw new IllegalArgumentException("Данне в файле некорректные (id)");
+                if (ar.length != 3) throw new IllegalArgumentException("Данные в файле некорректные");
+                if (!ar[0].matches("\\d+")) throw new IllegalArgumentException("Данные в файле некорректные (id)");
                 int id = Integer.parseInt(ar[0]);
                 if (!ar[1].matches("\\d*[.,]?\\d*"))
                     throw new IllegalArgumentException("Вторым аргументом должно быть число");
@@ -66,9 +66,9 @@ public class ReadWriteToySetFile {
         Path homeDir = Path.of(System.getProperty("user.dir"));
 //        System.out.println(homeDir);
         String separator = System.getProperty("file.separator");
-        Path defaultDir = Path.of(homeDir.toAbsolutePath() +
-                separator + "toyLotery" + separator + "src" + separator + "data" + separator);
-        Path newDir = Path.of(homeDir.toAbsolutePath() + "toyLotery" + separator + "dataToy" + separator);
+        Path defaultDir = Path.of(homeDir.toAbsolutePath() + separator + "src" + separator + "data" + separator);
+//        System.out.println(defaultDir);
+        Path newDir = Path.of(homeDir.toAbsolutePath()  + separator + "dataToy" + separator);
         if (Files.exists(defaultDir)) {
             System.out.println("папка по умолчанию c БД найдена " + defaultDir.toAbsolutePath());
             return defaultDir;
